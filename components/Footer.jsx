@@ -12,6 +12,7 @@ export const Footer = () => {
           <a
             href="https://matiasdelgado.com.ar"
             target="_blank"
+            rel="noreferrer"
             style={{
               fontWeight: "bold",
               color: "white",
@@ -29,6 +30,7 @@ export const Footer = () => {
         <a
           href="https://github.com/Matias008"
           target="_blank"
+          rel="noreferrer"
           style={{ color: "white", fontSize: "32px" }}
         >
           <VscGithubInverted />
