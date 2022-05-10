@@ -27,17 +27,19 @@ export const Settings = () => {
   });
 
   useEffect(() => {
-    setNewValues({
-      pomodoro:
-        JSON.parse(localStorage.getItem("minutes")).pomodoro ||
-        modeMinutes.pomodoro,
-      shortBreak:
-        JSON.parse(localStorage.getItem("minutes")).shortBreak ||
-        modeMinutes.shortBreak,
-      longBreak:
-        JSON.parse(localStorage.getItem("minutes")).longBreak ||
-        modeMinutes.longBreak,
-    });
+    if (localStorage.getItem("minutes")) {
+      setNewValues({
+        pomodoro: JSON.parse(localStorage.getItem("minutes")).pomodoro,
+        shortBreak: JSON.parse(localStorage.getItem("minutes")).shortBreak,
+        longBreak: JSON.parse(localStorage.getItem("minutes")).longBreak,
+      });
+    } else {
+      setNewValues({
+        pomodoro: modeMinutes.pomodoro,
+        shortBreak: modeMinutes.shortBreak,
+        longBreak: modeMinutes.longBreak,
+      });
+    }
   }, []);
 
   const handleChange = (e) => {

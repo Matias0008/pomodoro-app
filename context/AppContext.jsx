@@ -28,6 +28,7 @@ export const AppProvider = ({ children }) => {
     return "Time to take a long break!";
   }
   const timerMode = getTimerMode();
+
   useEffect(() => {
     if (localStorage.getItem("minutes")) {
       switch (mode) {
