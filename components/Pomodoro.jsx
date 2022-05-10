@@ -101,7 +101,7 @@ export const Pomodoro = () => {
         if (seconds === 0) {
           if (minutes !== 0) {
             setMinutes(minutes - 1);
-            setSeconds(2);
+            setSeconds(59);
           }
         } else {
           setSeconds(seconds - 1);
