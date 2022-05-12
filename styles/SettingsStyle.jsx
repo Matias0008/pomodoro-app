@@ -30,7 +30,7 @@ export const ModalBody = styled.div`
   max-width: 450px;
   height: 50%;
   @media (max-width: 768px) {
-    height: 75%;
+    height: 85%;
   }
   width: 90%;
   margin: 0 auto;

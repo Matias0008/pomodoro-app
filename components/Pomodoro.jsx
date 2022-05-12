@@ -41,7 +41,7 @@ export const Pomodoro = () => {
 
   function handleMode(mode) {
     if (mode === "work") {
-      if (counter === 4) {
+      if (counter % 4 === 0) {
         setMode("lbreak");
         setActiveTag(2);
         setCounter(counter + 1);
@@ -80,6 +80,7 @@ export const Pomodoro = () => {
   };
 
   const handleTagClick = (index) => {
+    if (isRunning) return alert("Please stop the timer first!");
     setActiveTag(index);
     index === 0 && setMode("work");
     index === 1 && setMode("sbreak");

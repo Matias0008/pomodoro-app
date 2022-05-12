@@ -16,7 +16,11 @@ export const AppProvider = ({ children }) => {
   const [activeTag, setActiveTag] = useState(0);
   const [counter, setCounter] = useState(1);
 
-  const timerMinutes = minutes < 10 ? `0${minutes}` : minutes;
+  let timerMinutes = minutes < 10 ? `0${minutes}` : minutes;
+  if (minutes === null) {
+    timerMinutes = "00";
+  }
+
   const timerSeconds = seconds < 10 ? `0${seconds}` : seconds;
   function getTimerMode() {
     if (mode === "work") {

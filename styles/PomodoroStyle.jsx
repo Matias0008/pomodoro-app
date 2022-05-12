@@ -72,6 +72,7 @@ export const ButtonStart = styled.button`
     props.mode === "work" ? "rgb(217, 85, 80);" : "rgb(76,145,149)"};
   background-color: white;
   ${(props) => props.mode === "lbreak" && "color: rgb(69, 124, 163)"}
+  transition: color 1.5s ease-in-out;
 `;
 
 export const Tags = styled.div`

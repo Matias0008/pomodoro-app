@@ -16,10 +16,11 @@ import {
 import { ButtonSubmit } from "styles/SettingsStyle";
 
 export const Settings = () => {
-  const { modeMinutes, setModeMinutes } = useContext(AppContext);
+  const { modeMinutes, setModeMinutes, setSeconds } = useContext(AppContext);
 
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  const [error, setError] = useState(false);
   const [newValues, setNewValues] = useState({
     pomodoro: "",
     shortBreak: "",
@@ -44,14 +45,38 @@ export const Settings = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    if (value === "" || value < 0 || value.match(/[+-]?([0-9]*[.])?[0-9]+/)) {
+      setError(true);
+    }
     setNewValues({ ...newValues, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (
+      newValues.pomodoro === "" ||
+      newValues.shortBreak === "" ||
+      newValues.longBreak === "" ||
+      newValues.pomodoro < 0 ||
+      newValues.shortBreak < 0 ||
+      newValues.longBreak < 0 ||
+      !Number.isInteger(Number(newValues.pomodoro)) ||
+      !Number.isInteger(Number(newValues.shortBreak)) ||
+      !Number.isInteger(Number(newValues.longBreak))
+    ) {
+      toggle();
+      setNewValues({
+        pomodoro: modeMinutes.pomodoro,
+        shortBreak: modeMinutes.shortBreak,
+        longBreak: modeMinutes.longBreak,
+      });
+      return;
+    }
+
     setModeMinutes({ ...newValues });
     localStorage.setItem("minutes", JSON.stringify(newValues));
     toggle();
+    setSeconds(0);
   };
 
   return (
@@ -87,6 +112,7 @@ export const Settings = () => {
                   onChange={handleChange}
                   type="number"
                   min="1"
+                  step="1"
                 />
               </InsideDiv>
               <InsideDiv>

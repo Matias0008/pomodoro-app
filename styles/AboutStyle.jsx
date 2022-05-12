@@ -20,7 +20,7 @@ export const Title = styled.h1`
   color: black;
   @media (max-width: 600px) {
     font-size: 3.8rem;
-  
+  }
 `;
 
 export const AboutItem = styled.div`
