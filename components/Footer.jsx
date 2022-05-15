@@ -1,12 +1,15 @@
 import React from "react";
 
 import { FooterDiv, FooterText } from "styles/FooterStyle";
+import { AppContext } from "/context/AppContext";
+
 import { VscGithubInverted } from "react-icons/vsc";
 
 export const Footer = () => {
+  const { mode } = React.useContext(AppContext);
   return (
     <>
-      <FooterDiv>
+      <FooterDiv mode={mode}>
         <FooterText>
           Made by{" "}
           <a
@@ -22,9 +25,6 @@ export const Footer = () => {
             Matias Delgado
           </a>
           <br></br>
-          <span style={{ fontSize: "16px", opacity: "0.7" }}>
-            Design by pomofocus
-          </span>
         </FooterText>
 
         <a

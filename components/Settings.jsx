@@ -19,7 +19,15 @@ export const Settings = () => {
   const { modeMinutes, setModeMinutes, setSeconds } = useContext(AppContext);
 
   const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen(!isOpen);
+  const toggle = () => {
+    setIsOpen(!isOpen);
+    document.body.classList.toggle("block-scroll");
+    if (document.querySelector(".hHNEff")) {
+      !isOpen
+        ? (document.querySelector(".hHNEff").style.zIndex = "-1")
+        : (document.querySelector(".hHNEff").style.zIndex = "1");
+    }
+  };
   const [error, setError] = useState(false);
   const [newValues, setNewValues] = useState({
     pomodoro: "",
@@ -144,6 +152,7 @@ export const Settings = () => {
       )}
       <SettingsDiv>
         <SettingsItem onClick={toggle}>
+          <p>Settings</p>
           <MdSettings />
         </SettingsItem>
       </SettingsDiv>

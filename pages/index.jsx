@@ -6,6 +6,7 @@ import { Pomodoro } from "../components/Pomodoro";
 import { About } from "components/About";
 import { Footer } from "components/Footer";
 import { Loader } from "components/Loader";
+import { Navbar } from "components/Navbar";
 
 export default function Home() {
   const { minutes, timerMinutes, timerSeconds, timerMode } =
@@ -34,19 +35,19 @@ export default function Home() {
         />
         <meta
           name="description"
-          content="Portafolio de Matias Delgado, desarrollador web de Villa Maria, Cordoba, Argentina. Creado con Next JS."
+          content="Pomodoro App is a simple pomodoro timer app. It's a simple way to get focused. By Matias Delgado"
         />
         <meta property="og:locale" content="es_ES" />
         <meta
           property="og:title"
-          content="Matias Delgado | Portafolio - Desarrollador Web"
+          content="Pomodoro App - Simple Pomodoro Timer"
         />
         <meta
           property="og:description"
-          content="Portafolio de Matias Delgado, desarrollador web de Villa Maria, Cordoba, Argentina. Creado con Next JS."
+          content="Pomodoro App is a simple pomodoro timer app. It's a simple way to get focused. By Matias Delgado"
         />
         <meta property="og:url" content="https://matiasdelgado.com.ar" />
-        <meta property="og:site_name" content="Portafolio de Matias Delgado" />
+        <meta property="og:site_name" content="Pomodoro App" />
         <style css>{`
         @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
@@ -73,6 +74,7 @@ export default function Home() {
         `}</style>
       </Head>
       {loader && <Loader />}
+      <Navbar />
       <Pomodoro />
       <About />
       <Footer />

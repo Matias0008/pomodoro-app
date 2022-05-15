@@ -47,7 +47,6 @@ export const AboutTitle = styled.h2`
     width: 24px;
     padding-top: 20px;
     border-bottom: 4px solid #f05b56;
-    opacity: 0.6;
   }
 `;
 

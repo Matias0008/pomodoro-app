@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 
 import { AppContext } from "/context/AppContext";
-import { Settings } from "/components/Settings";
 
 import swal from "sweetalert";
 import start from "public/start.mp3";
@@ -84,7 +83,9 @@ export const Pomodoro = () => {
 
   const handleStart = () => {
     setIsRunning(!isRunning);
-    audioStart.play();
+    if (!isRunning) {
+      audioStart.play();
+    }
   };
 
   const handleTagClick = (index) => {
@@ -129,7 +130,6 @@ export const Pomodoro = () => {
   return (
     <Main mode={mode}>
       <Container>
-        <Settings />
         <PomodoroDiv>
           <Tags>
             {["Pomodoro", "Short Break", "Long Break"].map((tag, index) => (

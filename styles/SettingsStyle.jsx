@@ -7,15 +7,28 @@ export const SettingsDiv = styled.div`
 `;
 
 export const SettingsItem = styled.button`
-  font-size: 35px;
+  font-size: 2.7rem;
   color: white;
   display: flex;
-  outline: none !important;
+  align-items: center;
+  justify-content: center;
+  outline: none;
   border: none;
   background: none;
   cursor: pointer;
+  gap: 5px;
+  background: none rgba(255, 255, 255, 0.2);
+  padding: 5px 12px 5px 12px;
+  border-radius: 5px;
+  p {
+    font-size: 1.6rem;
+    @media (max-width: 600px) {
+      display: none;
+    }
+  }
+
   @media (max-width: 1200px) {
-    cursor: none;
+    cursor: unset;
   }
 `;
 
@@ -115,7 +128,7 @@ export const ButtonSubmit = styled.button`
   cursor: pointer;
   box-shadow: rgb(0 0 0 / 20%) 0px 2px 2px;
   color: white;
-  opacity: 0.9;
+  opacity: 1;
   font-size: 14px;
   padding: 8px 12px;
   min-width: 70px;

@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const Main = styled.main`
   background-color: ${(props) =>
     props.mode === "work" ? "rgb(217, 85 , 80)" : "rgb(76, 145, 149)"};
-  min-height: 100vh;
+  margin-top: 70px;
+  min-height: calc(100vh - 70px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -115,8 +116,7 @@ export const FooterContainer = styled.div`
 
 export const PomodoroCounter = styled.h3`
   font-size: 18px;
-  opacity: 0.6;
-  color: white;
+  color: #b2c6c1;
   text-align: center;
 `;
 
