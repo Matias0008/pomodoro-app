@@ -143,8 +143,8 @@ export const Settings = () => {
         </Modal>
       )}
       <SettingsDiv>
-        <SettingsItem>
-          <MdSettings onClick={toggle} style={{ cursor: "pointer" }} />
+        <SettingsItem onClick={toggle}>
+          <MdSettings />
         </SettingsItem>
       </SettingsDiv>
     </>

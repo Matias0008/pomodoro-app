@@ -15,6 +15,7 @@ export const AppProvider = ({ children }) => {
   const [mode, setMode] = useState("work");
   const [activeTag, setActiveTag] = useState(0);
   const [counter, setCounter] = useState(1);
+  const [tabState, setTabState] = useState("visible");
 
   let timerMinutes = minutes < 10 ? `0${minutes}` : minutes;
   if (minutes === null) {
@@ -53,6 +54,12 @@ export const AppProvider = ({ children }) => {
     }
   }, [mode, modeMinutes]);
 
+  useEffect(() => {
+    document.addEventListener("visibilitychange", function () {
+      setTabState(document.visibilityState);
+    });
+  }, [tabState]);
+
   return (
     <AppContext.Provider
       value={{
@@ -73,6 +80,7 @@ export const AppProvider = ({ children }) => {
         timerMode,
         modeMinutes,
         setModeMinutes,
+        tabState,
       }}
     >
       {children}

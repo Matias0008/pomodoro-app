@@ -4,6 +4,8 @@ import { AppContext } from "/context/AppContext";
 import { Settings } from "/components/Settings";
 
 import swal from "sweetalert";
+import start from "public/start.mp3";
+import end from "public/end.mp3";
 
 import {
   Main,
@@ -37,7 +39,12 @@ export const Pomodoro = () => {
     modeMinutes,
     timerMinutes,
     timerSeconds,
+    tabState,
   } = useContext(AppContext);
+  const [audioStart, setAudioStart] = useState(null);
+  const [audioEnd, setAudioEnd] = useState(null);
+
+  const intervalTime = tabState === "visible" ? 1000 : 750;
 
   function handleMode(mode) {
     if (mode === "work") {
@@ -77,6 +84,7 @@ export const Pomodoro = () => {
 
   const handleStart = () => {
     setIsRunning(!isRunning);
+    audioStart.play();
   };
 
   const handleTagClick = (index) => {
@@ -96,6 +104,7 @@ export const Pomodoro = () => {
       if (minutes === 0 && seconds === 0) {
         setIsRunning(false);
         showAlert();
+        audioEnd.play();
       }
 
       const interval = setInterval(() => {
@@ -107,10 +116,15 @@ export const Pomodoro = () => {
         } else {
           setSeconds(seconds - 1);
         }
-      }, 1000);
+      }, intervalTime);
       return () => clearInterval(interval);
     }
   }, [isRunning, seconds]);
+
+  useEffect(() => {
+    setAudioStart(new Audio(start));
+    setAudioEnd(new Audio(end));
+  }, []);
 
   return (
     <Main mode={mode}>

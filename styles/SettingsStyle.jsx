@@ -6,10 +6,17 @@ export const SettingsDiv = styled.div`
   align-items: center;
 `;
 
-export const SettingsItem = styled.div`
+export const SettingsItem = styled.button`
   font-size: 35px;
   color: white;
   display: flex;
+  outline: none !important;
+  border: none;
+  background: none;
+  cursor: pointer;
+  @media (max-width: 1200px) {
+    cursor: none;
+  }
 `;
 
 export const Modal = styled.div`
@@ -30,7 +37,7 @@ export const ModalBody = styled.div`
   max-width: 450px;
   height: 50%;
   @media (max-width: 768px) {
-    height: 85%;
+    height: 95%;
   }
   width: 90%;
   margin: 0 auto;
