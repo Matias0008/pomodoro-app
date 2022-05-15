@@ -44,7 +44,7 @@ export const Pomodoro = () => {
   const [audioStart, setAudioStart] = useState(null);
   const [audioEnd, setAudioEnd] = useState(null);
 
-  const intervalTime = tabState === "visible" ? 1000 : 800;
+  const intervalTime = tabState === "visible" ? 1000 : 950;
 
   function handleMode(mode) {
     if (mode === "work") {
