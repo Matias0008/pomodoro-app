@@ -16,6 +16,8 @@ export const AppProvider = ({ children }) => {
   const [activeTag, setActiveTag] = useState(0);
   const [counter, setCounter] = useState(1);
   const [tabState, setTabState] = useState("visible");
+  const [autoStartBreak, setAutoStartBreak] = useState(false);
+  const [autoStartPomodoro, setAutoStartPomodoro] = useState(false);
 
   let timerMinutes = minutes < 10 ? `0${minutes}` : minutes;
   if (minutes === null) {
@@ -55,6 +57,21 @@ export const AppProvider = ({ children }) => {
   }, [mode, modeMinutes]);
 
   useEffect(() => {
+    if (localStorage.getItem("autoStartBreak")) {
+      setAutoStartBreak(JSON.parse(localStorage.getItem("autoStartBreak")));
+    } else {
+      setAutoStartBreak(false);
+    }
+    if (localStorage.getItem("autoStartPomodoro")) {
+      setAutoStartPomodoro(
+        JSON.parse(localStorage.getItem("autoStartPomodoro"))
+      );
+    } else {
+      setAutoStartPomodoro(false);
+    }
+  }, [autoStartPomodoro, autoStartBreak]);
+
+  useEffect(() => {
     document.addEventListener("visibilitychange", function () {
       setTabState(document.visibilityState);
     });
@@ -81,6 +98,10 @@ export const AppProvider = ({ children }) => {
         modeMinutes,
         setModeMinutes,
         tabState,
+        autoStartBreak,
+        setAutoStartBreak,
+        autoStartPomodoro,
+        setAutoStartPomodoro,
       }}
     >
       {children}

@@ -10,23 +10,6 @@ export const Footer = () => {
   return (
     <>
       <FooterDiv mode={mode}>
-        <FooterText>
-          Made by{" "}
-          <a
-            href="https://matiasdelgado.com.ar"
-            target="_blank"
-            rel="noreferrer"
-            style={{
-              fontWeight: "bold",
-              color: "white",
-              textDecoration: "none",
-            }}
-          >
-            Matias Delgado
-          </a>
-          <br></br>
-        </FooterText>
-
         <a
           href="https://github.com/Matias008"
           target="_blank"

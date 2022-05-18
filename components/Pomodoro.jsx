@@ -39,6 +39,8 @@ export const Pomodoro = () => {
     timerMinutes,
     timerSeconds,
     tabState,
+    autoStartBreak,
+    autoStartPomodoro,
   } = useContext(AppContext);
   const [audioStart, setAudioStart] = useState(null);
   const [audioEnd, setAudioEnd] = useState(null);
@@ -55,11 +57,22 @@ export const Pomodoro = () => {
         setCounter(counter + 1);
         setActiveTag(1);
         setMode("sbreak");
+        setTimeout(() => {
+          if (autoStartBreak) {
+            setIsRunning(true);
+          }
+        }, [300]);
       }
       return;
     }
+
     setActiveTag(0);
     setMode("work");
+    setTimeout(() => {
+      if (autoStartPomodoro) {
+        setIsRunning(true);
+      }
+    }, [300]);
     return;
   }
 
@@ -76,6 +89,7 @@ export const Pomodoro = () => {
             mode === "work" ? modeMinutes.pomodoro : modeMinutes.break
           );
           handleMode(mode);
+
           break;
       }
     });

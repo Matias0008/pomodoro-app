@@ -57,8 +57,6 @@ export const ButtonContainer = styled.div`
 `;
 
 export const ButtonStart = styled.button`
-  transform: ${(props) => (props.isRunning ? "translateY(3px)" : "none")};
-  transition: transform 0.1s ease-in-out;
   font-size: 3rem;
   font-weight: bold;
   height: 60px;
@@ -103,7 +101,6 @@ export const Tag = styled.h3`
   ${(props) => (props.activeTag ? "font-weight: bold;" : "font-weight: 300;")}
   background: ${(props) =>
     props.activeTag ? "none rgb(0, 0, 0, 0.15)" : "none"};
-  transition: background 0.2s ease-in-out;
 `;
 
 export const FooterContainer = styled.div`

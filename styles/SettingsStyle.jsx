@@ -7,9 +7,10 @@ export const SettingsDiv = styled.div`
 `;
 
 export const SettingsItem = styled.button`
-  font-size: 2.7rem;
+  font-size: 2.2rem;
   color: white;
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
   justify-content: center;
   outline: none;
@@ -47,8 +48,8 @@ export const Modal = styled.div`
 
 export const ModalBody = styled.div`
   position: relative;
-  max-width: 450px;
-  height: 50%;
+  max-width: 380px;
+  height: 60%;
   @media (max-width: 768px) {
     height: 95%;
   }
@@ -62,36 +63,40 @@ export const ModalBody = styled.div`
   align-items: center;
 
   label {
-    font-size: 18px;
-    text-align: center;
+    font-size: 14px;
     color: rgb(187, 187, 187);
     font-weight: bold;
+    text-align: left;
+    width: 100%;
+    padding: 0 10px 0 0px;
   }
 `;
 
-export const Form = styled.form`
-  flex-wrap: wrap;
-  max-width: 400px;
+export const GeneralContainer = styled.div`
+  width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0px 15px;
+`;
+
+export const Form = styled.article`
+  flex-wrap: wrap;
+  width: 100%;
+  display: flex;
   flex-direction: row;
-  gap: 20px;
-  justify-content: center;
-  align-content: center;
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-  }
+  gap: 5px;
+  justify-content: space-between;
 `;
 
 export const ModalInput = styled.input`
-  width: 90px;
-  height: 50px;
+  width: 100%;
+  height: 40px;
   border: none;
   border-radius: 4px;
   padding: 0 10px;
-  font-size: 18px;
+  font-size: 16px;
   outline: none;
   background-color: rgb(239, 239, 239);
   color: #000;
@@ -102,11 +107,8 @@ export const InsideDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
   width: 100px;
-  @media (max-width: 768px) {
-    gap: 5px;
-  }
 `;
 
 export const ModalHeader = styled.div`
@@ -115,7 +117,16 @@ export const ModalHeader = styled.div`
   width: 100%;
   height: 50px;
   align-items: center;
-  padding: 10px 10px 0 20px;
+  padding: 30px 0px;
+  border-bottom: 0.5px solid rgb(187, 187, 187);
+`;
+
+export const ModalButtons = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  align-items: center;
+  padding: 0 0 10px 0;
 `;
 
 export const ButtonSubmit = styled.button`
@@ -139,3 +150,53 @@ export const ButtonSubmit = styled.button`
     margin-top: 30px;
   }
 `;
+
+export const SomeOption = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+`;
+
+export const H3Modal = styled.h3`
+  ${(props) => props.margin && `margin-bottom: 5px;`}
+  width: 100%;
+  font-size: 17px;
+  color: rgb(85, 85, 85);
+`;
+
+export const OptionButtonDiv = styled.div`
+  cursor: pointer;
+  width: 70px;
+  height: 32px;
+  border-radius: 50px;
+  background-color: ${(props) =>
+    props.active ? "rgba(132, 199, 51, 0.8)" : "rgba(204, 204, 204)"};
+
+  position: relative;
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+
+  div {
+    position: absolute;
+    left: ${(props) => (props.active ? "auto" : "2px")};
+    width: 28px;
+    height: 28px;
+    border-radius: 50px;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 30%) 0px 1px 1px;
+    ${(props) => props.active && "right: 2px"};
+  }
+`;
+// cursor: pointer;
+// width: 60px;
+// height: 32px;
+// border-radius: 50px;
+// position: relative;
+// display: inline-flex;
+// -webkit-box-align: center;
+// align-items: center;
+// background-color: rgba(132, 199, 51, 0.8);
