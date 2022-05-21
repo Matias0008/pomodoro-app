@@ -16,13 +16,13 @@ export const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 40%;
+  max-width: 400px;
   height: 100%;
-  box-shadow: 0px 2.5px 2px -2px rgba(0, 0, 0, 0.2);
   margin: 0 auto;
 
   @media (max-width: 768px) {
     width: 90%;
+    max-width: unset;
   }
 
   h1 {

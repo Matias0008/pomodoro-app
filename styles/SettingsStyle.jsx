@@ -49,10 +49,8 @@ export const Modal = styled.div`
 export const ModalBody = styled.div`
   position: relative;
   max-width: 380px;
-  height: 60%;
-  @media (max-width: 768px) {
-    height: 95%;
-  }
+  height: 400px;
+
   width: 90%;
   margin: 0 auto;
   background-color: white;
@@ -78,7 +76,17 @@ export const GeneralContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 0px 15px;
+  padding: 0px 20px;
+`;
+
+export const ContainerOptions = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 30px;
 `;
 
 export const Form = styled.article`
@@ -109,6 +117,9 @@ export const InsideDiv = styled.div`
   align-items: center;
   gap: 5px;
   width: 100px;
+  @media screen and (max-width: 600px) {
+    width: 90px;
+  }
 `;
 
 export const ModalHeader = styled.div`
@@ -146,9 +157,6 @@ export const ButtonSubmit = styled.button`
   background-color: rgb(34, 34, 34);
   border: 2px solid rgb(34, 34, 34);
   display: inline-block;
-  @media (max-width: 768px) {
-    margin-top: 30px;
-  }
 `;
 
 export const SomeOption = styled.div`
@@ -157,7 +165,7 @@ export const SomeOption = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 50px;
+  height: 40px;
 `;
 
 export const H3Modal = styled.h3`
@@ -169,8 +177,8 @@ export const H3Modal = styled.h3`
 
 export const OptionButtonDiv = styled.div`
   cursor: pointer;
-  width: 70px;
-  height: 32px;
+  width: 50px;
+  height: 22px;
   border-radius: 50px;
   background-color: ${(props) =>
     props.active ? "rgba(132, 199, 51, 0.8)" : "rgba(204, 204, 204)"};
@@ -183,8 +191,8 @@ export const OptionButtonDiv = styled.div`
   div {
     position: absolute;
     left: ${(props) => (props.active ? "auto" : "2px")};
-    width: 28px;
-    height: 28px;
+    width: 18px;
+    height: 18px;
     border-radius: 50px;
     background-color: white;
     box-shadow: rgb(0 0 0 / 30%) 0px 1px 1px;

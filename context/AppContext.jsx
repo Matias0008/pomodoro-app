@@ -18,6 +18,7 @@ export const AppProvider = ({ children }) => {
   const [tabState, setTabState] = useState("visible");
   const [autoStartBreak, setAutoStartBreak] = useState(false);
   const [autoStartPomodoro, setAutoStartPomodoro] = useState(false);
+  const [elapsedSeconds, setElapsedSeconds] = useState(0);
 
   let timerMinutes = minutes < 10 ? `0${minutes}` : minutes;
   if (minutes === null) {
@@ -102,6 +103,8 @@ export const AppProvider = ({ children }) => {
         setAutoStartBreak,
         autoStartPomodoro,
         setAutoStartPomodoro,
+        elapsedSeconds,
+        setElapsedSeconds,
       }}
     >
       {children}

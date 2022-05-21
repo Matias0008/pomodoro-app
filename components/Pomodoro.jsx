@@ -41,6 +41,7 @@ export const Pomodoro = () => {
     tabState,
     autoStartBreak,
     autoStartPomodoro,
+    setElapsedSeconds,
   } = useContext(AppContext);
   const [audioStart, setAudioStart] = useState(null);
   const [audioEnd, setAudioEnd] = useState(null);
@@ -48,6 +49,7 @@ export const Pomodoro = () => {
   const intervalTime = tabState === "visible" ? 1000 : 950;
 
   function handleMode(mode) {
+    setElapsedSeconds(0);
     if (mode === "work") {
       if (counter % 4 === 0) {
         setMode("lbreak");
@@ -88,6 +90,7 @@ export const Pomodoro = () => {
           setMinutes(
             mode === "work" ? modeMinutes.pomodoro : modeMinutes.break
           );
+          setElapsedSeconds(0);
           handleMode(mode);
 
           break;
@@ -105,6 +108,7 @@ export const Pomodoro = () => {
   const handleTagClick = (index) => {
     if (isRunning) return alert("Please stop the timer first!");
     setActiveTag(index);
+    setElapsedSeconds(0);
     index === 0 && setMode("work");
     index === 1 && setMode("sbreak");
     index === 2 && setMode("lbreak");
@@ -131,6 +135,7 @@ export const Pomodoro = () => {
         } else {
           setSeconds(seconds - 1);
         }
+        setElapsedSeconds((elapsedSeconds) => elapsedSeconds + 1);
       }, intervalTime);
       return () => clearInterval(interval);
     }

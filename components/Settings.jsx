@@ -16,6 +16,7 @@ import {
 
 import {
   ButtonSubmit,
+  ContainerOptions,
   GeneralContainer,
   H3Modal,
   ModalButtons,
@@ -136,65 +137,69 @@ export const Settings = () => {
                   style={{
                     fontSize: "32px",
                     cursor: "pointer",
+                    opacity: ".3",
+                    hover: { opacity: "1" },
                   }}
                 />
               </ModalHeader>
-              <Form>
-                <H3Modal margin>Time (minutes)</H3Modal>
-                <InsideDiv>
-                  <label htmlFor="pomodoro">Pomodoro</label>
-                  <ModalInput
-                    value={newValues.pomodoro}
-                    name="pomodoro"
-                    onChange={handleChange}
-                    type="number"
-                    min="1"
-                    step="1"
-                  />
-                </InsideDiv>
-                <InsideDiv>
-                  <label htmlFor="shortBreak">Short Break</label>
-                  <ModalInput
-                    value={newValues.shortBreak}
-                    name="shortBreak"
-                    onChange={handleChange}
-                    type="number"
-                    min="1"
-                  />
-                </InsideDiv>
-                <InsideDiv>
-                  <label htmlFor="longBreak">Long Break</label>
-                  <ModalInput
-                    value={newValues.longBreak}
-                    onChange={handleChange}
-                    name="longBreak"
-                    type="number"
-                    min="1"
-                  />
-                </InsideDiv>
-              </Form>
-              <Form>
-                <SomeOption>
-                  <H3Modal>Auto start Breaks?</H3Modal>
-                  <OptionButtonDiv
-                    active={autoStartBreak}
-                    onClick={handleStartBreak}
-                  >
-                    <div></div>
-                  </OptionButtonDiv>
-                </SomeOption>
+              <ContainerOptions>
+                <Form>
+                  <H3Modal margin>Time in minutes</H3Modal>
+                  <InsideDiv>
+                    <label htmlFor="pomodoro">Pomodoro</label>
+                    <ModalInput
+                      value={newValues.pomodoro}
+                      name="pomodoro"
+                      onChange={handleChange}
+                      type="number"
+                      min="1"
+                      step="1"
+                    />
+                  </InsideDiv>
+                  <InsideDiv>
+                    <label htmlFor="shortBreak">Short Break</label>
+                    <ModalInput
+                      value={newValues.shortBreak}
+                      name="shortBreak"
+                      onChange={handleChange}
+                      type="number"
+                      min="1"
+                    />
+                  </InsideDiv>
+                  <InsideDiv>
+                    <label htmlFor="longBreak">Long Break</label>
+                    <ModalInput
+                      value={newValues.longBreak}
+                      onChange={handleChange}
+                      name="longBreak"
+                      type="number"
+                      min="1"
+                    />
+                  </InsideDiv>
+                </Form>
                 <Form>
                   <SomeOption>
-                    <H3Modal>Auto start Pomodoros?</H3Modal>
+                    <H3Modal>Auto start Breaks?</H3Modal>
                     <OptionButtonDiv
-                      active={autoStartPomodoro}
-                      onClick={handleStartPomodoro}
+                      active={autoStartBreak}
+                      onClick={handleStartBreak}
                     >
                       <div></div>
                     </OptionButtonDiv>
                   </SomeOption>
+                  <Form>
+                    <SomeOption>
+                      <H3Modal>Auto start Pomodoros?</H3Modal>
+                      <OptionButtonDiv
+                        active={autoStartPomodoro}
+                        onClick={handleStartPomodoro}
+                      >
+                        <div></div>
+                      </OptionButtonDiv>
+                    </SomeOption>
+                  </Form>
                 </Form>
-              </Form>
+              </ContainerOptions>
               <ModalButtons>
                 <ButtonSubmit onClick={handleSubmit}>OK</ButtonSubmit>
               </ModalButtons>

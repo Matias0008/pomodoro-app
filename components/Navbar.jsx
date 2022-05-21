@@ -3,6 +3,7 @@ import { AppContext } from "/context/AppContext.jsx";
 
 import { Header, Nav } from "styles/NavbarStyle";
 import { Settings } from "/components/Settings";
+import { ProgressBar } from "./ProgressBar";
 
 export const Navbar = () => {
   const { mode } = React.useContext(AppContext);
@@ -13,6 +14,7 @@ export const Navbar = () => {
           <h1>Pomotech</h1>
           <Settings />
         </Nav>
+        <ProgressBar />
       </Header>
     </>
   );

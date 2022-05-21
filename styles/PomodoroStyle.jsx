@@ -47,6 +47,9 @@ export const PomodoroDiv = styled.div`
 export const Timer = styled.h2`
   font-size: clamp(10rem, 12vw, 12rem);
   text-align: center;
+  @media (max-width: 300px) {
+    font-size: 9rem;
+  }
 `;
 
 export const ButtonContainer = styled.div`
@@ -80,6 +83,9 @@ export const Tags = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 340px) {
+    flex-direction: column;
+  }
 `;
 
 export const Tag = styled.h3`
@@ -96,7 +102,14 @@ export const Tag = styled.h3`
   color: white;
   opacity: 1;
   @media (max-width: 768px) {
+    font-size: 16px;
+  }
+  @media (max-width: 374px) {
     font-size: 14px;
+  }
+  @media (max-width: 340px) {
+    width: 100%;
+    justify-content: center;
   }
   ${(props) => (props.activeTag ? "font-weight: bold;" : "font-weight: 300;")}
   background: ${(props) =>
