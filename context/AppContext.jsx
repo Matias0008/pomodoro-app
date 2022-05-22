@@ -9,6 +9,7 @@ export const AppProvider = ({ children }) => {
     pomodoro: 25,
     shortBreak: 5,
     longBreak: 15,
+    longBreakInterval: 4,
   });
   const [seconds, setSeconds] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
@@ -38,6 +39,7 @@ export const AppProvider = ({ children }) => {
   const timerMode = getTimerMode();
 
   useEffect(() => {
+    setElapsedSeconds(0);
     if (localStorage.getItem("minutes")) {
       switch (mode) {
         case "work":

@@ -33,67 +33,63 @@ export const Settings = () => {
     autoStartBreak,
     setAutoStartPomodoro,
     autoStartPomodoro,
+    setElapsedSeconds,
+    isRunning,
+    setIsRunning,
   } = useContext(AppContext);
 
   const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => {
-    setIsOpen(!isOpen);
-    document.body.classList.toggle("block-scroll");
-    if (document.querySelector(".hHNEff")) {
-      !isOpen
-        ? (document.querySelector(".hHNEff").style.zIndex = "-1")
-        : (document.querySelector(".hHNEff").style.zIndex = "1");
-    }
-  };
-  const [error, setError] = useState(false);
   const [newValues, setNewValues] = useState({
     pomodoro: "",
     shortBreak: "",
     longBreak: "",
+    longBreakInterval: "",
   });
 
-  useEffect(() => {
-    if (localStorage.getItem("minutes")) {
-      setNewValues({
-        pomodoro: JSON.parse(localStorage.getItem("minutes")).pomodoro,
-        shortBreak: JSON.parse(localStorage.getItem("minutes")).shortBreak,
-        longBreak: JSON.parse(localStorage.getItem("minutes")).longBreak,
-      });
-    } else {
-      setNewValues({
-        pomodoro: modeMinutes.pomodoro,
-        shortBreak: modeMinutes.shortBreak,
-        longBreak: modeMinutes.longBreak,
-      });
-    }
-  }, []);
+  const toggle = () => {
+    setIsOpen(!isOpen);
+    document.body.classList.toggle("block-scroll");
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (value === "" || value < 0 || value.match(/[+-]?([0-9]*[.])?[0-9]+/)) {
-      setError(true);
-    }
     setNewValues({ ...newValues, [name]: value });
   };
 
   const handleSubmit = (e) => {
+    setElapsedSeconds(0);
+    if (isRunning) {
+      setIsRunning(false);
+    }
+
     e.preventDefault();
     if (
       newValues.pomodoro === "" ||
       newValues.shortBreak === "" ||
       newValues.longBreak === "" ||
-      newValues.pomodoro < 0 ||
-      newValues.shortBreak < 0 ||
-      newValues.longBreak < 0 ||
+      newValues.pomodoro <= 0 ||
+      newValues.shortBreak <= 0 ||
+      newValues.longBreak <= 0 ||
+      newValues.longBreakInterval < 2 ||
       !Number.isInteger(Number(newValues.pomodoro)) ||
       !Number.isInteger(Number(newValues.shortBreak)) ||
-      !Number.isInteger(Number(newValues.longBreak))
+      !Number.isInteger(Number(newValues.longBreak)) ||
+      !Number.isInteger(Number(newValues.longBreakInterval))
     ) {
       toggle();
       setNewValues({
-        pomodoro: modeMinutes.pomodoro,
-        shortBreak: modeMinutes.shortBreak,
-        longBreak: modeMinutes.longBreak,
+        pomodoro:
+          JSON.parse(localStorage.getItem("minutes")).pomodoro ||
+          modeMinutes.pomodoro,
+        shortBreak:
+          JSON.parse(localStorage.getItem("minutes")).shortBreak ||
+          modeMinutes.shortBreak,
+        longBreak:
+          JSON.parse(localStorage.getItem("minutes")).longBreak ||
+          modeMinutes.longBreak,
+        longBreakInterval:
+          JSON.parse(localStorage.getItem("minutes")).longBreakInterval ||
+          modeMinutes.longBreakInterval,
       });
       return;
     }
@@ -113,6 +109,25 @@ export const Settings = () => {
     localStorage.setItem("autoStartPomodoro", !autoStartPomodoro);
     setAutoStartPomodoro(!autoStartPomodoro);
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("minutes")) {
+      setNewValues({
+        pomodoro: JSON.parse(localStorage.getItem("minutes")).pomodoro,
+        shortBreak: JSON.parse(localStorage.getItem("minutes")).shortBreak,
+        longBreak: JSON.parse(localStorage.getItem("minutes")).longBreak,
+        longBreakInterval: JSON.parse(localStorage.getItem("minutes"))
+          .longBreakInterval,
+      });
+    } else {
+      setNewValues({
+        pomodoro: modeMinutes.pomodoro,
+        shortBreak: modeMinutes.shortBreak,
+        longBreak: modeMinutes.longBreak,
+        longBreakInterval: modeMinutes.longBreakInterval,
+      });
+    }
+  }, []);
 
   return (
     <>
@@ -197,6 +212,26 @@ export const Settings = () => {
                         <div></div>
                       </OptionButtonDiv>
                     </SomeOption>
+                    <Form>
+                      <SomeOption
+                        style={{
+                          marginBottom: "10px",
+                          paddingTop: "20px",
+                        }}
+                      >
+                        <H3Modal>Long Break interval</H3Modal>
+                        <ModalInput
+                          style={{
+                            width: "60px",
+                          }}
+                          type="number"
+                          min="2"
+                          value={newValues.longBreakInterval}
+                          name="longBreakInterval"
+                          onChange={handleChange}
+                        />
+                      </SomeOption>
+                    </Form>
                   </Form>
                 </Form>
               </ContainerOptions>

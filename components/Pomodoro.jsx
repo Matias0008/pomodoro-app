@@ -51,7 +51,7 @@ export const Pomodoro = () => {
   function handleMode(mode) {
     setElapsedSeconds(0);
     if (mode === "work") {
-      if (counter % 4 === 0) {
+      if (counter % modeMinutes.longBreakInterval === 0) {
         setMode("lbreak");
         setActiveTag(2);
         setCounter(counter + 1);

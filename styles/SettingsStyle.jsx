@@ -49,8 +49,7 @@ export const Modal = styled.div`
 export const ModalBody = styled.div`
   position: relative;
   max-width: 380px;
-  height: 400px;
-
+  height: 420px;
   width: 90%;
   margin: 0 auto;
   background-color: white;
@@ -199,12 +198,3 @@ export const OptionButtonDiv = styled.div`
     ${(props) => props.active && "right: 2px"};
   }
 `;
-// cursor: pointer;
-// width: 60px;
-// height: 32px;
-// border-radius: 50px;
-// position: relative;
-// display: inline-flex;
-// -webkit-box-align: center;
-// align-items: center;
-// background-color: rgba(132, 199, 51, 0.8);
